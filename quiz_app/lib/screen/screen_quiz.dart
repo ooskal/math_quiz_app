@@ -63,7 +63,7 @@ class _QuizScreenState extends State<QuizScreen> {
           Container(
             padding: EdgeInsets.fromLTRB(0, width * 0.024, 0, width * 0.024),
             child: Text(
-              'Q${_currentIndex + 1}.',
+              'Q${_currentIndex + 1}.', // 퀴즈 번호
               style: TextStyle(
                 fontSize: width * 0.06,
                 fontWeight: FontWeight.bold,
@@ -104,7 +104,7 @@ class _QuizScreenState extends State<QuizScreen> {
                     primary: Color.fromARGB(255, 92, 174, 250),
                     textStyle: TextStyle(color: Colors.white),
                   ),
-                  onPressed: _answers[_currentIndex] == 1
+                  onPressed: _answers[_currentIndex] == -1
                       ? null
                       : () {
                           if (_currentIndex == widget.quizs.length - 1) {
