@@ -7,18 +7,22 @@ import '../model/model_quiz.dart';
 class ResultScreen extends StatelessWidget {
   List<int> answers;
   List<Quiz> quizs;
-  ResultScreen({required this.answers, required this.quizs});
+  List<Quiz> chapter;
+  ResultScreen(
+      {required this.answers, required this.quizs, required this.chapter});
 
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
     double width = screenSize.width;
     double height = screenSize.height;
-
+    List<String> chapter = [];
     int score = 0;
     for (int i = 0; i < quizs.length; i++) {
       if (quizs[i].answer == answers[i]) {
         score += 1;
+      } else {
+        chapter.add(quizs[i].chapter);
       }
     }
 
@@ -26,7 +30,7 @@ class ResultScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text('중등 수학 문제풀이'),
-          backgroundColor: Color.fromARGB(255, 77, 101, 233),
+          backgroundColor: Color.fromARGB(255, 51, 67, 170),
           leading: Container(),
         ),
         body: Center(
@@ -74,7 +78,7 @@ class ResultScreen extends StatelessWidget {
                         child: Container(),
                       ),
                       Text(
-                        '$score/${quizs.length}',
+                        '$score/${quizs.length}', //점수 표시
                         style: TextStyle(
                           fontSize: width * 0.20,
                           fontWeight: FontWeight.bold,
@@ -82,16 +86,47 @@ class ResultScreen extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(width * 0.012),
+                        padding: EdgeInsets.all(width * 0.042),
                       ),
                     ],
                   ),
                 ),
+                Padding(
+                  padding: EdgeInsets.all(width * 0.022),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: Color.fromARGB(255, 46, 67, 187)),
+                    color: Colors.white,
+                  ),
+                  width: width * 0.73,
+                  height: height * 0.14,
+                  padding: EdgeInsets.fromLTRB(
+                      width * 0.012, width * 0.088, 0, width * 0.012),
+                  child: Text(
+                    'Chapter: ${chapter.join(', ')} 개념의 보충이 필요합니다.',
+                    style: TextStyle(
+                      fontSize: width * 0.035,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+
+                // Expanded(
+                //   child: Text(
+                //     'Chapter: ${chapter.join(', ')} 개념의 보충이 필요합니다.',
+                //     style: TextStyle(
+                //       fontSize: width * 0.048,
+                //       fontWeight: FontWeight.bold,
+                //     ),
+                //   ),
+                // ),
                 Expanded(
                   child: Container(),
                 ),
                 Container(
-                  padding: EdgeInsets.only(bottom: width * 0.048),
+                  padding: EdgeInsets.only(bottom: width * 0.058),
                   child: ButtonTheme(
                     minWidth: width * 0.73,
                     height: height * 0.05,

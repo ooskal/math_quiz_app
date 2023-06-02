@@ -122,6 +122,7 @@ class _QuizScreenState extends State<QuizScreen> {
                                     builder: (context) => ResultScreen(
                                           answers: _answers,
                                           quizs: widget.quizs,
+                                          chapter: widget.quizs, // chapter 값 전달
                                         )));
                           } else {
                             // 그렇지 않으면 상태를 업데이트 하고 다음 퀴즈로 이동
