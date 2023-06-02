@@ -16,7 +16,7 @@ class QuizScreen extends StatefulWidget {
 }
 
 class _QuizScreenState extends State<QuizScreen> {
-  List<int> _answers = [-1, -1, -1];
+  List<int> _answers = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1]; //퀴즈 갯수
   List<bool> _answersState = [false, false, false, false];
   int _currentIndex = 0;
   SwiperController _controller = SwiperController();
@@ -37,11 +37,12 @@ class _QuizScreenState extends State<QuizScreen> {
             width: width * 0.85,
             height: height * 0.5,
             child: Swiper(
-              controller: _controller,
-              physics: NeverScrollableScrollPhysics(),
-              loop: false,
-              itemCount: widget.quizs.length,
+              controller: _controller, //swiper 위젯의 컨트롤러를 설정
+              physics: NeverScrollableScrollPhysics(), // 스와이프 동작을 비활성화
+              loop: false, // 스와이프 반복을 비활성화
+              itemCount: widget.quizs.length, //퀴즈 개수를 항목 수로 설정
               itemBuilder: (BuildContext context, int index) {
+                //함수를 호출하여 퀴즈 카드 생성
                 return _buildquizCard(widget.quizs[index], width, height);
               },
             ),
@@ -58,18 +59,21 @@ class _QuizScreenState extends State<QuizScreen> {
           border: Border.all(color: Colors.white),
           color: Colors.white),
       child: Column(
+        // 자식 위젯을 세로로 배열
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+          //퀴즈 번호를 표시하기 위한 컨테이너
           Container(
             padding: EdgeInsets.fromLTRB(0, width * 0.024, 0, width * 0.024),
             child: Text(
-              'Q${_currentIndex + 1}.', // 퀴즈 번호
+              'Q${_currentIndex + 1}.', // 퀴즈번호 표시
               style: TextStyle(
                 fontSize: width * 0.06,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
+          //퀴즈 제목 표시하기 위한 컨테이너
           Container(
             width: width * 0.8,
             padding: EdgeInsets.only(top: width * 0.012),
@@ -82,11 +86,13 @@ class _QuizScreenState extends State<QuizScreen> {
             ),
           ),
           Expanded(
-            child: Container(),
+            child: Container(), // 다음 위젯을 아래로 밀어내기 위한 공간 확보
           ),
           Column(
-            children: _buildCandidates(width, quiz),
+            children:
+                _buildCandidates(width, quiz), // 선택지를 표시하는 위젯들을 자식 위젯으로 포함
           ),
+          //버튼을 위한 컨테이너
           Container(
             padding: EdgeInsets.all(width * 0.024),
             child: Center(
@@ -97,17 +103,19 @@ class _QuizScreenState extends State<QuizScreen> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: ElevatedButton(
+                  // 현재 퀴즈 인덱스에 따라 버튼 텍스트를 다르게 표시함
                   child: _currentIndex == widget.quizs.length - 1
-                      ? Text("결과보기")
-                      : Text('다음문제'),
+                      ? Text("결과보기") //결과보기
+                      : Text('다음문제'), // 다음문제
                   style: ElevatedButton.styleFrom(
                     primary: Color.fromARGB(255, 92, 174, 250),
                     textStyle: TextStyle(color: Colors.white),
                   ),
                   onPressed: _answers[_currentIndex] == -1
-                      ? null
+                      ? null // 선택한 답변이 없으면 버튼 비활성화
                       : () {
                           if (_currentIndex == widget.quizs.length - 1) {
+                            // 마지막 퀴즈인 경우 결과 화면으로 이동
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -116,6 +124,7 @@ class _QuizScreenState extends State<QuizScreen> {
                                           quizs: widget.quizs,
                                         )));
                           } else {
+                            // 그렇지 않으면 상태를 업데이트 하고 다음 퀴즈로 이동
                             _answersState = [false, false, false, false];
                             _currentIndex += 1;
                             _controller.next();
@@ -130,6 +139,7 @@ class _QuizScreenState extends State<QuizScreen> {
     );
   }
 
+  // 4개의 답 항목 위젯
   List<Widget> _buildCandidates(double width, Quiz quiz) {
     List<Widget> _children = [];
     for (int i = 0; i < 4; i++) {
@@ -141,11 +151,14 @@ class _QuizScreenState extends State<QuizScreen> {
           answerState: _answersState[i],
           tap: () {
             setState(() {
+              // 후보 항목이 탭되었을 때의 동작을 정의
               for (int j = 0; j < 4; j++) {
                 if (j == i) {
+                  //탭된 후보 항목에 대한 상태를 업뎃
                   _answersState[i] = true;
                   _answers[_currentIndex] = j;
                 } else {
+                  // 탭되지 않은 후보 항목의 상태를 업뎃
                   _answersState[j] = false;
                 }
               }
@@ -153,6 +166,8 @@ class _QuizScreenState extends State<QuizScreen> {
           },
         ),
       );
+
+      //후보 항목 사이에 여백 추가
       _children.add(
         Padding(
           padding: EdgeInsets.all(width * 0.024),

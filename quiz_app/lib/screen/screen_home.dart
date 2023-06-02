@@ -18,7 +18,8 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       isLoading = true;
     });
-    final response = await http.get(Uri.parse('http://localhost:8000/quiz/2/'));
+    final response =
+        await http.get(Uri.parse('http://localhost:8000/quiz/10/'));
     if (response.statusCode == 200) {
       String responseData = response.body;
       print(responseData); // 데이터 값 콘솔에 출력
@@ -56,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("My Quiz App"),
+          title: Text("중등 문제 풀기 앱"),
           backgroundColor: Color.fromARGB(255, 112, 176, 212),
           leading: Container(),
         ),
