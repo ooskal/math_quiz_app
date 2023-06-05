@@ -32,10 +32,10 @@ class _CandWidgetState extends State<CandWidget> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: Color.fromARGB(255, 178, 137, 245),
+          color: Color.fromARGB(255, 161, 200, 226),
         ),
         color: widget.answerState
-            ? Color.fromARGB(255, 178, 137, 245)
+            ? Color.fromARGB(255, 161, 200, 226)
             : Colors.white,
       ),
       child: InkWell(

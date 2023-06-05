@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         appBar: AppBar(
           title: Text("자가 학력진단 App"),
-          backgroundColor: Color.fromARGB(255, 178, 137, 245),
+          backgroundColor: Color.fromARGB(255, 161, 200, 226),
           leading: Container(),
         ),
         body: Column(
@@ -73,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       // 원하는 색상으로 변경
-                      primary: Color.fromARGB(255, 178, 137, 245),
+                      primary: Color.fromARGB(255, 161, 200, 226),
                       // 선택적으로 버튼 텍스트 색상 변경 가능
                       onPrimary: Colors.white,
                     ),

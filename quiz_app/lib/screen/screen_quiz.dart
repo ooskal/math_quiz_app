@@ -28,12 +28,12 @@ class _QuizScreenState extends State<QuizScreen> {
     double height = screenSize.height;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color.fromARGB(255, 178, 137, 245),
+        backgroundColor: Color.fromARGB(255, 161, 200, 226),
         body: Center(
           child: Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: Color.fromARGB(255, 178, 137, 245))),
+                border: Border.all(color: Color.fromARGB(255, 161, 200, 226))),
             width: width * 0.85,
             height: height * 0.5,
             child: Swiper(
@@ -108,7 +108,7 @@ class _QuizScreenState extends State<QuizScreen> {
                       ? Text("결과보기") //결과보기
                       : Text('다음문제'), // 다음문제
                   style: ElevatedButton.styleFrom(
-                    primary: Color.fromARGB(255, 178, 137, 245),
+                    primary: Color.fromARGB(255, 161, 200, 226),
                     textStyle: TextStyle(color: Colors.white),
                   ),
                   onPressed: _answers[_currentIndex] == -1

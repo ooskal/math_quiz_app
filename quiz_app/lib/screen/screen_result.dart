@@ -28,20 +28,20 @@ class ResultScreen extends StatelessWidget {
       }
     }
 
-    chapter.addAll(uniqueChapters);
+    chapter = List<String>.from(uniqueChapters);
 
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('중등 수학 문제풀이'),
-          backgroundColor: Color.fromARGB(255, 178, 137, 245),
+          title: Text('자가 학력진단'),
+          backgroundColor: Color.fromARGB(255, 161, 200, 226),
           leading: Container(),
         ),
         body: Center(
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Color.fromARGB(255, 178, 137, 245),
+              color: Color.fromARGB(255, 161, 200, 226),
             ),
             width: width * 0.85,
             height: height * 0.5,
@@ -54,7 +54,7 @@ class ResultScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     border:
-                        Border.all(color: Color.fromARGB(255, 178, 137, 245)),
+                        Border.all(color: Color.fromARGB(255, 161, 200, 226)),
                     color: Colors.white,
                   ),
                   width: width * 0.73,
@@ -87,7 +87,7 @@ class ResultScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: width * 0.18,
                           fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 24, 16, 70),
+                          color: Color.fromARGB(255, 109, 175, 219),
                         ),
                       ),
                       Padding(
@@ -103,7 +103,7 @@ class ResultScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     border:
-                        Border.all(color: Color.fromARGB(255, 178, 137, 245)),
+                        Border.all(color: Color.fromARGB(255, 161, 200, 226)),
                     color: Colors.white,
                   ),
                   width: width * 0.73,
