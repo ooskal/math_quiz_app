@@ -30,23 +30,6 @@ class _HomeScreenState extends State<HomeScreen> {
       throw Exception('failed to load data');
     }
   }
-  // List<Quiz> quizs = [
-  //   Quiz.fromMap({
-  //     'title': 'test',
-  //     'candidates': ['a', 'b', 'c', 'd'],
-  //     'answer': 0
-  //   }),
-  //   Quiz.fromMap({
-  //     'title': 'test',
-  //     'candidates': ['a', 'b', 'c', 'd'],
-  //     'answer': 0
-  //   }),
-  //   Quiz.fromMap({
-  //     'title': 'test',
-  //     'candidates': ['a', 'b', 'c', 'd'],
-  //     'answer': 0
-  //   }),
-  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -57,8 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("중등 문제 풀기 앱"),
-          backgroundColor: Color.fromARGB(255, 112, 176, 212),
+          title: Text("자가 학력진단 App"),
+          backgroundColor: Color.fromARGB(255, 178, 137, 245),
           leading: Container(),
         ),
         body: Column(
@@ -69,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: EdgeInsets.all(width * 0.024),
             ),
             Text(
-              '중등 문제 풀기 앱',
+              '자가 학력진단',
               style: TextStyle(
                 fontSize: width * 0.065,
                 fontWeight: FontWeight.bold,
@@ -88,6 +71,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      // 원하는 색상으로 변경
+                      primary: Color.fromARGB(255, 178, 137, 245),
+                      // 선택적으로 버튼 텍스트 색상 변경 가능
+                      onPrimary: Colors.white,
+                    ),
                     onPressed: () {
                       _fetchQuizs().whenComplete(() {
                         return Navigator.push(
